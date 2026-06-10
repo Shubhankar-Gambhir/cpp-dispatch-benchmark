@@ -1,0 +1,17 @@
+# started on Tue Jun  9 23:40:57 2026
+
+
+ Performance counter stats for './build/bench_virtual_gcc13_default g1':
+
+        1823605233      idq.dsb_uops                                                  (79.91%)
+           2611666      idq.mite_uops                                                 (79.77%)
+            155055      frontend_retired.dsb_miss                                     (80.15%)
+            137581      L1-icache-load-misses                                         (80.17%)
+               806      itlb_misses.miss_causes_a_walk                                     (80.00%)
+
+       0.248475034 seconds time elapsed
+
+       0.242663000 seconds user
+       0.002949000 seconds sys
+
+

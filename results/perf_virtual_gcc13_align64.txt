@@ -1,0 +1,17 @@
+# started on Tue Jun  9 23:40:58 2026
+
+
+ Performance counter stats for './build/bench_virtual_gcc13_align64 g1':
+
+        1826506087      idq.dsb_uops                                                  (80.01%)
+           2633012      idq.mite_uops                                                 (80.01%)
+            156895      frontend_retired.dsb_miss                                     (80.01%)
+            120086      L1-icache-load-misses                                         (80.01%)
+               630      itlb_misses.miss_causes_a_walk                                     (79.96%)
+
+       0.245929519 seconds time elapsed
+
+       0.240859000 seconds user
+       0.002949000 seconds sys
+
+

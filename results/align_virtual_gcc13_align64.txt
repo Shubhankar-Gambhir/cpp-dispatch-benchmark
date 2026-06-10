@@ -1,0 +1,8 @@
+Binary: build/bench_virtual_gcc13_align64
+Pattern: store
+
+| Function | Address | CL offset (mod 64) | DSB offset (mod 32) | CL aligned? | DSB aligned? |
+|----------|---------|--------------------|--------------------|-------------|--------------|
+| <_ZN9EpsilonBS5storeEPii> | 0x00000000000016c0 | 0 | 0 | YES | YES |
+| <_ZN8SerialBS5storeEPii> | 0x0000000000001700 | 0 | 0 | YES | YES |
+| <_ZN4G1BS5storeEPii> | 0x0000000000001740 | 0 | 0 | YES | YES |
