@@ -40,6 +40,7 @@ for mech in "${MECHANISMS[@]}"; do
             best=""
             for run in $(seq 1 $RUNS); do
                 ns=$(taskset -c 0 "./$binary" "$GC_ARG" 2>&1 | grep -oP '[\d.]+(?= ns/call)')
+                [ -z "$ns" ] && { echo "ERROR: $binary produced no output or failed" >&2; exit 1; }
                 echo "${mech},${gcc},${align},${run},${ns}" >> "$RAW_CSV"
                 if [ -z "$best" ] || (( $(echo "$ns < $best" | bc -l) )); then
                     best="$ns"
