@@ -37,12 +37,9 @@ for name in virtual_gcc13_default virtual_gcc13_align64 virtual_gcc11_default; d
         exit 1
     fi
 
-    # Capture perf stat output (stderr) to file
+    # Single run: perf stat captures counters to file, binary stdout captured for timing
     perf_out="$RESULTS_DIR/perf_${name}.txt"
-    taskset -c 0 perf stat -e "$COUNTERS" "./$binary" "$GC_ARG" 2>"$perf_out"
-
-    # Parse ns/call from benchmark stdout
-    ns=$(taskset -c 0 "./$binary" "$GC_ARG" 2>/dev/null | grep -oP '[\d.]+(?= ns/call)')
+    ns=$(taskset -c 0 perf stat --output "$perf_out" -e "$COUNTERS" "./$binary" "$GC_ARG" | grep -oP '[\d.]+(?= ns/call)')
     [ -z "$ns" ] && { echo "ERROR: $binary produced no timing output" >&2; exit 1; }
 
     # Parse counters from perf output (perf stat writes to stderr, redirected to file)
